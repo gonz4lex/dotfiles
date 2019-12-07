@@ -99,7 +99,9 @@ alias pls="sudo"
 alias zshconf="code ~/.zshrc"
 alias ohmyzsh="code ~/.oh-my-zsh"
 alias gpo="git push origin"
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME" >> $HOME/.zshrc
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME" >> $HOME/.zshrc # https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html
+alias venv="python3 -m venv .env"
+alias vact="source .env/bin/activate"
 
 # For thefuck app: https://github.com/nvbn/thefuck
 
