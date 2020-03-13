@@ -4,6 +4,12 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/alex/.oh-my-zsh"
 
+# Fix Hyper first line precent sign
+unsetopt PROMPT_SP
+
+# Fix terminal colors when using tmux
+if [ ! "$TMUX" = "" ]; then export TERM=xterm-256color; fi
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -14,7 +20,7 @@ ZSH_THEME="josh"
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+ZSH_THEME_RANDOM_CANDIDATES=( "bira" "josh" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -30,10 +36,10 @@ ZSH_THEME="josh"
 # DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
-DISABLE_MAGIC_FUNCTIONS=true
+DISABLE_MAGIC_FUNCTIONS="true"
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -70,6 +76,9 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-completions zsh-autosuggestions)
 
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STYLE='fg=7'
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -80,25 +89,24 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 
-# For a full list of active aliases, run `alias`.
-#
 # Aliases
+# For a full list of active aliases, run `alias`.
 
-alias pls="sudo"
-alias zshconf="code ~/.zshrc"
-alias ohmyzsh="code ~/.oh-my-zsh"
-alias gpo="git push origin"
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias pls="sudo !!"
+alias zshconf="vi ~/.zshrc"
+alias ohmyzsh="vi ~/.oh-my-zsh"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME" >> $HOME/.zshrc # https://harfangk.github.io/2016/09/18/manage-dotfiles-with-a-git-bare-repository.html
 alias venv="python3 -m venv .env"
 alias vact="source .env/bin/activate"
@@ -106,6 +114,8 @@ alias vact="source .env/bin/activate"
 # For thefuck app: https://github.com/nvbn/thefuck
 
 eval $(thefuck --alias)
+
+# Create a new directory and cd into it
 
 function mkcd {
   command mkdir $1 && cd $1
