@@ -1,0 +1,62 @@
+# OS files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+desktop.ini
+*.DS_Store
+
+# Editors
+.vscode/
+*.code-workspace
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.backup
+*.orig
+*.rej
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+pip-log.txt
+
+# Archives and packages
+*.tar
+*.gz
+*.zip
+*.rar
+*.7z
+
+# Builds and distributables
+dist/
+build/
+out/
+
+# Misc
+.env.local
+.env.*.local
+coverage/
+.nyc_output/
+.cache/
+.parcel-cache/
+*.tgz
+*.lock
+
+# Git
+*.patch
+*.diff

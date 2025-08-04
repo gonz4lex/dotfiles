@@ -1,0 +1,48 @@
+[user]
+  name = alexgonzalez
+  email = hello@alexgonzalezc.dev
+
+[core]
+  editor = code --wait
+  excludesfile = ~/.gitignore_global
+
+[alias]
+  st = status
+  ci = commit
+  co = checkout
+  br = branch
+  last = log -1 HEAD
+  lg = log --oneline --graph --decorate --all
+  unstage = reset HEAD --
+  amend = commit --amend --no-edit
+  aa = add -A
+  ca = commit -a
+  d = diff
+  dc = diff --cached
+
+[merge]
+  tool = vimdiff
+
+[diff]
+  tool = vimdiff
+
+[color]
+  ui = auto
+
+[init]
+  defaultBranch = main
+
+[push]
+  default = current
+
+[pull]
+  rebase = true
+
+[credential]
+  helper = store
+
+[log]
+  date = iso
+
+[interactive]
+  diffFilter = delta --color-only
